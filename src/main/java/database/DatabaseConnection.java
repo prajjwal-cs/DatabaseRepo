@@ -11,4 +11,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
+    private final String URL = "jdbc:postgresql://localhost:5432/postgres";
+    private final String USERNAME = "postgres";
+    private final String PASSWORD = "123";
+
+    public Connection createConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    }
 }
