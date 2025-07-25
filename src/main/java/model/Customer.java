@@ -4,29 +4,29 @@ Author: Prajjwal Pachauri(cypher)
 Date: 25-07-2025
 Time: 11:51 AM
 File: Customer.java */
-package entity;
+package model;
 
 import java.util.Objects;
 
 public class Customer {
-    private final int ID;
+    private final int id;
     private String name;
     private String email;
-    private String phone;
+    private long phone;
 
-    public  Customer(int id) {
-        ID = id;
+    public Customer(int id) {
+        this.id = id;
     }
 
-    public Customer(int id, String name, String email, String phone) {
-        ID = id;
+    public Customer(int id, String name, String email, long phone) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
     }
 
     public int getId() {
-        return ID;
+        return id;
     }
 
     public String getName() {
@@ -45,11 +45,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -57,18 +57,18 @@ public class Customer {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return ID == customer.ID && Objects.equals(name, customer.name) && Objects.equals(email, customer.email) && Objects.equals(phone, customer.phone);
+        return id == customer.id && Objects.equals(name, customer.name) && Objects.equals(email, customer.email) && Objects.equals(phone, customer.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, name, email, phone);
+        return Objects.hash(id, name, email, phone);
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "ID=" + ID +
+                "ID=" +id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
