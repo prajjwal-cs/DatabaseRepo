@@ -6,6 +6,6 @@ Time: 4:22 PM
 File: DatabaseOperations.java */
 package database;
 
-public class CrudOperations {
+public interface CrudOperations {
 
 }
