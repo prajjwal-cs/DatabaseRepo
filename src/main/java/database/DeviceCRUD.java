@@ -23,7 +23,7 @@ public class DeviceCRUD implements CrudOperations<Device> {
 
     @Override
     public void create(Device device) {
-        String query = "INSERT INTO device (name, type, manufacturer) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO device (name, type, manufacturer) VALUES (?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, device.getName());
             statement.setString(2, device.getType());
@@ -41,7 +41,7 @@ public class DeviceCRUD implements CrudOperations<Device> {
 
     @Override
     public void read(int id) {
-        String query = "SELECT * FROM device WHERE id = ?";
+        String query = "SELECT * FROM device WHERE device_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -53,7 +53,7 @@ public class DeviceCRUD implements CrudOperations<Device> {
 
     @Override
     public void update(int id, Device device) {
-        String query = "UPDATE device SET name = ?, type = ?, manufacturer = ? WHERE id = ?";
+        String query = "UPDATE device SET name = ?, type = ?, manufacturer = ? WHERE device_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, device.getName());
             statement.setString(2, device.getType());
@@ -72,7 +72,7 @@ public class DeviceCRUD implements CrudOperations<Device> {
 
     @Override
     public void delete(int id) {
-        String query = "DELETE FROM device WHERE id = ?";
+        String query = "DELETE FROM device WHERE device_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             int rowDeleted = statement.executeUpdate();

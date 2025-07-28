@@ -22,7 +22,7 @@ public class CustomerCRUD implements CrudOperations<Customer> {
 
     @Override
     public void create(Customer customer) {
-        String query = "INSERT INTO customer (name, email, phone_number) VALUES (?, ?, ?)";
+        String query = "INSERT INTO customer (name, email, phone) VALUES (?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query);) {
             statement.setString(1, customer.getName());
             statement.setString(2, customer.getEmail());
@@ -41,7 +41,7 @@ public class CustomerCRUD implements CrudOperations<Customer> {
 
     @Override
     public void read(int id) {
-        String query = "SELECT * FROM customer WHERE id = ?";
+        String query = "SELECT * FROM customer WHERE customer_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
@@ -53,7 +53,7 @@ public class CustomerCRUD implements CrudOperations<Customer> {
 
     @Override
     public void update(int id, Customer customer) {
-       String query = "UPDATE customer SET name = ?, email = ?, phone_number = ? WHERE id = ?";
+       String query = "UPDATE customer SET name = ?, email = ?, phone_number = ? WHERE customer_id = ?";
        try (PreparedStatement statement = connection.prepareStatement(query)) {
            statement.setString(1, customer.getName());
            statement.setString(2, customer.getEmail());
@@ -73,7 +73,7 @@ public class CustomerCRUD implements CrudOperations<Customer> {
 
     @Override
     public void delete(int id) {
-        String query = "DELETE FROM customer WHERE id = ?";
+        String query = "DELETE FROM customer WHERE customer_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             int rowDeleted = statement.executeUpdate();
