@@ -6,63 +6,60 @@ Time: 10:39 AM
 File: DeviceMain.java */
 package main;
 
-import database.CrudOperations;
 import database.DatabaseConnection;
-import database.DeviceCRUD;
 import model.Device;
+import services.CrudOperations;
+import services.DeviceCRUD;
 
 import java.util.Scanner;
 
 public class DeviceMain {
     public static void main(String[] args) {
         DatabaseConnection connection = new DatabaseConnection();
-        CrudOperations<Device> deviceCrudOperations =  new DeviceCRUD(connection.createConnection());
+        CrudOperations<Device> deviceCrudOperations = new DeviceCRUD(connection.createConnection());
         Device device = new Device();
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
-        try {
-            while(choice != 5) {
-                if (choice > 5) {
-                    System.out.println("Invalid choice");
+        while (choice != 5) {
+            System.out.println("Welcome to Device Management System");
+            System.out.println("1. Create Device");
+            System.out.println("2. Read Device");
+            System.out.println("3. Update Device");
+            System.out.println("4. Delete Device");
+            System.out.println("5. Exit");
+            choice = scanner.nextInt();
+            if (choice > 5) {
+                System.out.println("Invalid choice");
+            }
+            switch (choice) {
+                case 1: {
+                    System.out.println("Enter device name, manufacturer_name");
+                    device.setName(scanner.next());
+                    device.setManufacturer(scanner.next());
+                    deviceCrudOperations.create(device);
+                    break;
                 }
-                System.out.println("Welcome to Device Management System");
-                System.out.println("1. Create Device");
-                System.out.println("2. Read Device");
-                System.out.println("3. Update Device");
-                System.out.println("4. Delete Device");
-                System.out.println("5. Exit");
-                choice = scanner.nextInt();
-                switch (choice) {
-                    case 1: {
-                        System.out.println("Enter device name, manufacturer_name");
-                        device.setName(scanner.next());
-                        device.setManufacturer(scanner.next());
-                        deviceCrudOperations.create(device);
-                        break;
-                    }
-                    case 2: {
-                        System.out.print("Enter device id to read: ");
-                        deviceCrudOperations.read(scanner.nextInt());
-                        break;
-                    }
-                    case 3: {
-                        System.out.print("Enter device id to update: ");
-                        int id = scanner.nextInt();
-                        System.out.println("Enter device name, type, manufacturer: ");
-                        device.setName(scanner.next());
-                        device.setManufacturer(scanner.next());
-                        deviceCrudOperations.update(id, device);
-                        break;
-                    }
-                    case 4: {
-                        System.out.print("Enter device id to delete: ");
-                        int id = scanner.nextInt();
-                        deviceCrudOperations.delete(id);
-                    }
+                case 2: {
+                    System.out.print("Enter device id to read: ");
+                    deviceCrudOperations.read(scanner.nextInt());
+                    break;
+                }
+                case 3: {
+                    System.out.print("Enter device id to update: ");
+                    int id = scanner.nextInt();
+                    System.out.println("Enter device name, type, manufacturer: ");
+                    device.setName(scanner.next());
+                    device.setManufacturer(scanner.next());
+                    deviceCrudOperations.update(id, device);
+                    break;
+                }
+                case 4: {
+                    System.out.print("Enter device id to delete: ");
+                    int id = scanner.nextInt();
+                    deviceCrudOperations.delete(id);
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Invalid input Please try again...");
         }
+
     }
 }

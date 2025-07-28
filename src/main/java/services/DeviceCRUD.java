@@ -4,7 +4,7 @@ Author: Prajjwal Pachauri(cypher)
 Date: 28-07-2025
 Time: 10:41 AM
 File: DeviceCRUD.java */
-package database;
+package services;
 
 import model.Device;
 

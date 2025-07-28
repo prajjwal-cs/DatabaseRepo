@@ -56,10 +56,6 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device{" +
-                "deviceId=" + id +
-                ", deviceName='" + name + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                '}';
+        return "Device{" + "deviceId=" + id + ", deviceName='" + name + '\'' + ", manufacturer='" + manufacturer + '\'' + '}';
     }
 }
