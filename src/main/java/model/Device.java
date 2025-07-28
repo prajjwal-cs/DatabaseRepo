@@ -11,16 +11,14 @@ import java.util.Objects;
 public class Device {
     private int id;
     private String name;
-    private String type;
     private String manufacturer;
 
     public Device() {
     }
 
-    public Device(int deviceId, String deviceName, String type, String manufacturer) {
+    public Device(int deviceId, String deviceName, String manufacturer) {
         this.id = deviceId;
         this.name = deviceName;
-        this.type = type;
         this.manufacturer = manufacturer;
     }
 
@@ -36,14 +34,6 @@ public class Device {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getManufacturer() {
         return manufacturer;
     }
@@ -56,12 +46,12 @@ public class Device {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Device device = (Device) o;
-        return id == device.id && Objects.equals(name, device.name) && Objects.equals(type, device.type) && Objects.equals(manufacturer, device.manufacturer);
+        return id == device.id && Objects.equals(name, device.name) && Objects.equals(manufacturer, device.manufacturer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, type, manufacturer);
+        return Objects.hash(id, name, manufacturer);
     }
 
     @Override
@@ -69,7 +59,6 @@ public class Device {
         return "Device{" +
                 "deviceId=" + id +
                 ", deviceName='" + name + '\'' +
-                ", type='" + type + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 '}';
     }

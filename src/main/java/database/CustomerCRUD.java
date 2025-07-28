@@ -45,7 +45,15 @@ public class CustomerCRUD implements CrudOperations<Customer> {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            System.out.println("Customer - " + resultSet.toString());
+            while (resultSet.next()) {
+                int customer_id = resultSet.getInt("customer_id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                long phone = resultSet.getLong("phone");
+                Customer customer = new Customer(customer_id, name, email, phone);
+                System.out.println(customer);
+                System.out.println();
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -53,7 +61,7 @@ public class CustomerCRUD implements CrudOperations<Customer> {
 
     @Override
     public void update(int id, Customer customer) {
-       String query = "UPDATE customer SET name = ?, email = ?, phone_number = ? WHERE customer_id = ?";
+       String query = "UPDATE customer SET name = ?, email = ?, phone = ? WHERE customer_id = ?";
        try (PreparedStatement statement = connection.prepareStatement(query)) {
            statement.setString(1, customer.getName());
            statement.setString(2, customer.getEmail());

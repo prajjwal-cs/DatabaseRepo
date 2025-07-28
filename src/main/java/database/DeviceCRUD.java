@@ -23,10 +23,9 @@ public class DeviceCRUD implements CrudOperations<Device> {
 
     @Override
     public void create(Device device) {
-        String query = "INSERT INTO device (name, type, manufacturer) VALUES (?, ?, ?)";
+        String query = "INSERT INTO device (name, manufacturer) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, device.getName());
-            statement.setString(2, device.getType());
             statement.setString(3, device.getManufacturer());
             int row = statement.executeUpdate();
             if (row > 0) {
@@ -53,10 +52,9 @@ public class DeviceCRUD implements CrudOperations<Device> {
 
     @Override
     public void update(int id, Device device) {
-        String query = "UPDATE device SET name = ?, type = ?, manufacturer = ? WHERE device_id = ?";
+        String query = "UPDATE device SET name = ?, manufacturer = ? WHERE device_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, device.getName());
-            statement.setString(2, device.getType());
             statement.setString(3, device.getManufacturer());
             statement.setInt(4, id);
             int rowUpdated = statement.executeUpdate();

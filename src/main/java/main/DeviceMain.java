@@ -34,9 +34,8 @@ public class DeviceMain {
                 choice = scanner.nextInt();
                 switch (choice) {
                     case 1: {
-                        System.out.println("Enter device name, type, manufacturer_name");
+                        System.out.println("Enter device name, manufacturer_name");
                         device.setName(scanner.next());
-                        device.setType(scanner.next());
                         device.setManufacturer(scanner.next());
                         deviceCrudOperations.create(device);
                         break;
@@ -51,7 +50,6 @@ public class DeviceMain {
                         int id = scanner.nextInt();
                         System.out.println("Enter device name, type, manufacturer: ");
                         device.setName(scanner.next());
-                        device.setType(scanner.next());
                         device.setManufacturer(scanner.next());
                         deviceCrudOperations.update(id, device);
                         break;
