@@ -22,6 +22,9 @@ public class DeviceMain {
         int choice = 0;
         try {
             while(choice != 5) {
+                if (choice > 5) {
+                    System.out.println("Invalid choice");
+                }
                 System.out.println("Welcome to Device Management System");
                 System.out.println("1. Create Device");
                 System.out.println("2. Read Device");
