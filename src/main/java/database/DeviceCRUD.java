@@ -44,6 +44,13 @@ public class DeviceCRUD implements CrudOperations<Device> {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int device_id = resultSet.getInt("device_id");
+                String name = resultSet.getString("name");
+                String manufacturer = resultSet.getString("manufacturer");
+                Device device = new Device(device_id, name, manufacturer);
+                System.out.println(device);
+            }
             System.out.println("Reading device: " + resultSet.toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
