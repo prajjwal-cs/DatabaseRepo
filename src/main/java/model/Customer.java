@@ -9,13 +9,13 @@ package model;
 import java.util.Objects;
 
 public class Customer {
-    private final int id;
+    private int id;
+
     private String name;
     private String email;
     private long phone;
 
-    public Customer(int id) {
-        this.id = id;
+    public Customer() {
     }
 
     public Customer(int id, String name, String email, long phone) {
