@@ -7,6 +7,8 @@ File: CustomerCRUD.java */
 package services;
 
 import model.Customer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +17,7 @@ import java.sql.SQLException;
 
 public class CustomerCRUD implements CrudOperations<Customer> {
     private final Connection connection;
+    private static final Logger logger = LogManager.getLogger();
 
     public CustomerCRUD(Connection connection) {
         this.connection = connection;
@@ -30,12 +33,12 @@ public class CustomerCRUD implements CrudOperations<Customer> {
             int rowInserted = statement.executeUpdate();
 
             if (rowInserted > 0) {
-                System.out.println("Customer created successfully...");
+                logger.info("Customer created successfully...");
             } else {
-                System.out.println("Failed to create customer.");
+                logger.error("Failed to create customer.");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.debug("SQL Exception while inserting customer object: {}", e.getMessage());
         }
     }
 
@@ -55,7 +58,7 @@ public class CustomerCRUD implements CrudOperations<Customer> {
                 System.out.println();
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.debug("SQL exception while read from customer database: {}", e.getMessage());
         }
     }
 
@@ -70,12 +73,12 @@ public class CustomerCRUD implements CrudOperations<Customer> {
 
             int rowUpdated = statement.executeUpdate();
             if (rowUpdated > 0) {
-                System.out.println("Customer updated successfully...");
+                logger.info("Customer updated successfully...");
             } else {
-                System.out.println("Failed to update customer.");
+                logger.error("Failed to update customer.");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.debug("Exception while update query execute in customer update: {}", e.getMessage());
         }
     }
 
@@ -86,12 +89,12 @@ public class CustomerCRUD implements CrudOperations<Customer> {
             statement.setInt(1, id);
             int rowDeleted = statement.executeUpdate();
             if (rowDeleted > 0) {
-                System.out.println("Customer deleted successfully...");
+                logger.info("Customer deleted successfully... of id={}", id);
             } else {
-                System.out.println("Failed to delete customer.");
+                logger.error("Failed to delete customer.");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.debug("Exception when deleting customer query executes{}", e.getMessage());
         }
     }
 }

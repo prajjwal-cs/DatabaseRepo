@@ -6,11 +6,15 @@ Time: 4:08 PM
 File: DatabaseConnection.java */
 package database;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
+    private static final Logger logger = LogManager.getLogger();
     private static Connection connection;
     private final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private final String USERNAME = "postgres";
@@ -20,12 +24,12 @@ public class DatabaseConnection {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             if (connection != null) {
-                System.out.println("Connected to database successfully");
+                logger.info("Connected to database successfully");
             } else {
-                System.out.println("Couldn't connect to database");
+                logger.error("Couldn't connect to database");
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.debug("SQL Error while connecting to database: {}", e.getMessage());
         }
         return connection;
     }

@@ -7,6 +7,8 @@ File: DeviceCRUD.java */
 package services;
 
 import model.Device;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,27 +16,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DeviceCRUD implements CrudOperations<Device> {
-
-    private Connection connection;
-
+    private static final Logger logger = LogManager.getLogger();
+    private final Connection connection;
     public DeviceCRUD(Connection connection) {
         this.connection = connection;
     }
 
     @Override
     public void create(Device device) {
-        String query = "INSERT INTO device (name, manufacturer) VALUES (?, ?)";
+        String query = "INSERT INTO device (name, manufacture) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, device.getName());
-            statement.setString(3, device.getManufacturer());
+            statement.setString(2, device.getManufacturer());
             int row = statement.executeUpdate();
             if (row > 0) {
-                System.out.println("Device created successfully.");
+                logger.info("Device created successfully.");
             } else  {
-                System.out.println("Failed to create customer.");
+                logger.error("Failed to create customer.");
             }
         } catch (SQLException e) {
-            System.out.println("Error while inserting device");
+            logger.debug("Error while inserting device: {}", e.getMessage());
         }
     }
 
@@ -52,8 +53,8 @@ public class DeviceCRUD implements CrudOperations<Device> {
                 System.out.println(device);
             }
             System.out.println("Reading device: " + resultSet.toString());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e) {
+            logger.debug("SQL exception when reading device: {}", e.getMessage());
         }
     }
 
@@ -62,16 +63,16 @@ public class DeviceCRUD implements CrudOperations<Device> {
         String query = "UPDATE device SET name = ?, manufacturer = ? WHERE device_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, device.getName());
-            statement.setString(3, device.getManufacturer());
+            statement.setString(2, device.getManufacturer());
             statement.setInt(4, id);
             int rowUpdated = statement.executeUpdate();
             if (rowUpdated > 0) {
-                System.out.println("Device updated successfully.");
+                logger.info("Device updated successfully.");
             } else   {
-                System.out.println("Failed to update customer.");
+                logger.error("Failed to update customer.");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.debug("Exception when executing update query in device: {}", e.getMessage());
         }
     }
 
@@ -82,12 +83,12 @@ public class DeviceCRUD implements CrudOperations<Device> {
             statement.setInt(1, id);
             int rowDeleted = statement.executeUpdate();
             if (rowDeleted > 0) {
-                System.out.println("Device deleted successfully.");
+                logger.info("Device deleted successfully.");
             } else   {
-                System.out.println("Failed to delete device.");
+                logger.error("Failed to delete device.");
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.debug("Exception when executing delete Query in device: {}", e.getMessage());
         }
     }
 }

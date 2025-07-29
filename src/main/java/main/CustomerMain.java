@@ -8,6 +8,8 @@ package main;
 
 import database.DatabaseConnection;
 import model.Customer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import services.CrudOperations;
 import services.CustomerCRUD;
 
@@ -18,6 +20,7 @@ public class CustomerMain {
         DatabaseConnection connection = new DatabaseConnection();
         CrudOperations<Customer> customerCrudOperations = new CustomerCRUD(connection.createConnection());
         Scanner scanner = new Scanner(System.in);
+        Logger logger = LogManager.getLogger();
         Customer customer = new Customer();
         int choice = 0;
 
@@ -30,7 +33,7 @@ public class CustomerMain {
             System.out.println("5. Exit");
             choice = scanner.nextInt();
             if (choice > 5) {
-                System.out.println("Invalid choice");
+                logger.error("Invalid choice...");
             }
             switch (choice) {
                 case 1: {
