@@ -1,0 +1,30 @@
+2025-07-210 11:43:15 [main] ERROR main.DeviceMain - Database Connection failed: database.DatabaseConnection@7f3b84b8
+2025-07-210 11:45:50 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:45:50 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:48:15 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:48:15 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:48:24 [main] DEBUG services.DeviceCRUD - Error while inserting device: ERROR: column "manufacture" of relation "device" does not exist
+  Position: 27
+2025-07-210 11:49:08 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:49:08 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:49:15 [main] INFO  services.DeviceCRUD - Device created successfully.
+2025-07-210 11:53:03 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:53:03 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:53:11 [main] INFO  services.DeviceCRUD - Device created successfully.
+2025-07-210 11:53:22 [main] INFO  services.DeviceCRUD - Device created successfully.
+2025-07-210 11:56:05 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:56:05 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:56:14 [main] INFO  services.DeviceCRUD - Device created successfully.
+2025-07-210 11:58:14 [main] ERROR main.DeviceMain - Database Connection failed: database.DatabaseConnection@4efbca5a
+2025-07-210 11:58:23 [main] ERROR main.DeviceMain - Database Connection failed: database.DatabaseConnection@223191a6
+2025-07-210 12:00:18 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:00:18 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:00:25 [main] DEBUG services.DeviceCRUD - Error while inserting device: ERROR: column "manufacture" of relation "device" does not exist
+  Position: 27
+2025-07-210 12:01:59 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:01:59 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:02:11 [main] DEBUG services.DeviceCRUD - Error while inserting device: ERROR: column "manufacture" of relation "device" does not exist
+  Position: 27
+2025-07-210 12:03:04 [main] DEBUG database.DatabaseConnection - SQL Error while connecting to database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2025-07-210 12:03:04 [main] DEBUG database.DatabaseConnection - SQL Error while connecting to database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2025-07-210 12:03:04 [main] ERROR main.DeviceMain - Database Connection failed: database.DatabaseConnection@48f2bd5b

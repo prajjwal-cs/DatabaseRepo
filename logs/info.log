@@ -1,0 +1,14 @@
+2025-07-210 11:53:03 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:53:03 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:53:11 [main] INFO  services.DeviceCRUD - Device created successfully.
+2025-07-210 11:53:22 [main] INFO  services.DeviceCRUD - Device created successfully.
+2025-07-210 11:56:05 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:56:05 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 11:56:14 [main] INFO  services.DeviceCRUD - Device created successfully.
+2025-07-210 11:58:14 [main] ERROR main.DeviceMain - Database Connection failed: database.DatabaseConnection@4efbca5a
+2025-07-210 11:58:23 [main] ERROR main.DeviceMain - Database Connection failed: database.DatabaseConnection@223191a6
+2025-07-210 12:00:18 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:00:18 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:01:59 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:01:59 [main] INFO  database.DatabaseConnection - Connected to database successfully
+2025-07-210 12:03:04 [main] ERROR main.DeviceMain - Database Connection failed: database.DatabaseConnection@48f2bd5b

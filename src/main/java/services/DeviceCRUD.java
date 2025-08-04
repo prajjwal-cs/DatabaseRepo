@@ -24,7 +24,7 @@ public class DeviceCRUD implements CrudOperations<Device> {
 
     @Override
     public void create(Device device) {
-        String query = "INSERT INTO device (name, manufacture) VALUES (?, ?)";
+        String query = "INSERT INTO device (name, manufacturer) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, device.getName());
             statement.setString(2, device.getManufacturer());
@@ -52,7 +52,7 @@ public class DeviceCRUD implements CrudOperations<Device> {
                 Device device = new Device(device_id, name, manufacturer);
                 System.out.println(device);
             }
-            System.out.println("Reading device: " + resultSet.toString());
+            System.out.println();
         } catch (SQLException e) {
             logger.debug("SQL exception when reading device: {}", e.getMessage());
         }
